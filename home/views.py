@@ -3,13 +3,5 @@ from django.shortcuts import render
 # Create your views here.
 
 def home(request):
-    return render(request, "index.html")
-
-def properties(request):
-    return render(request, 'properties.html')
-
-def property_details(request):
-    return render(request, 'property-details.html')
-
-def contact(request):
-    return render(request, 'contact.html')
+    is_home_page = True
+    return render(request, "index.html", locals())

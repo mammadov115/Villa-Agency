@@ -2,7 +2,8 @@ from django.db import models
 
 # Create your models here.
 
-class HeaderData(models.Model):        
+class HeaderData(models.Model): 
+    logo = models.CharField(max_length=150)       
     email = models.EmailField()
     location = models.CharField(max_length=250)
 
@@ -24,5 +25,6 @@ class SocialMediaLink(models.Model):
 
     def __str__(self):
         return self.platform
+
     
 
