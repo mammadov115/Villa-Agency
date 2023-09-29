@@ -10,7 +10,6 @@ class HeaderData(models.Model):
     def __str__(self):
         return "Header Info"
 
-
 class SocialMediaLink(models.Model):
     class SocialMediaAccount(models.TextChoices):
         FB = "Facebook", "Facebook"
@@ -25,6 +24,18 @@ class SocialMediaLink(models.Model):
 
     def __str__(self):
         return self.platform
+
+# slider
+
+class Slider(models.Model):
+    image = models.ImageField(upload_to="Slider Images/%Y-%m-%d")
+    location = models.CharField(max_length=100)
+    text = models.TextField(max_length=500)
+
+    def __str__(self):
+        return f'{self.location} - {self.text}'
+    
+    
 
     
 

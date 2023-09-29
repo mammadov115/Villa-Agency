@@ -22,3 +22,8 @@ class HeaderDataAdmin(admin.ModelAdmin):
             'show_save_and_add_another': False
         })
         return super().render_change_form(request, context, add, change, form_url, obj)
+
+@admin.register(Slider)
+class SliderAdmin(admin.ModelAdmin):
+    model = Slider
+    list_display = ['location', 'text']
