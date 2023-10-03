@@ -14,7 +14,7 @@ class HeaderDataAdmin(admin.ModelAdmin):
     inlines = [SocialLinkInline]
 
     def has_add_permission(self, request: HttpRequest) -> bool:
-        objects = HeaderData.objects.all().count()
+        objects = HeaderData.objects.count()
         return True if objects == 0 else False
     
     def render_change_form(self, request: Any, context: Any, add: bool = ..., change: bool = ..., form_url: str = ..., obj: Any | None = ...) -> Any:
@@ -26,4 +26,18 @@ class HeaderDataAdmin(admin.ModelAdmin):
 @admin.register(Slider)
 class SliderAdmin(admin.ModelAdmin):
     model = Slider
-    list_display = ['location', 'text']
+    list_display = ['country', 'text']
+
+@admin.register(Video)
+class VideoAdmin(admin.ModelAdmin):
+    model = Video
+
+    def has_add_permission(self, request: HttpRequest) -> bool:
+        objects = Video.objects.count()
+        return True if objects == 0 else False
+
+    def render_change_form(self, request: Any, context: Any, add: bool = ..., change: bool = ..., form_url: str = ..., obj: Any | None = ...) -> Any:
+        context.update({
+            'show_save_add_another': False
+        })
+        return super().render_change_form(request, context, add, change, form_url, obj)

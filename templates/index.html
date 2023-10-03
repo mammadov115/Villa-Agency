@@ -1,4 +1,5 @@
 {% extends "partials/base.html" %}
+{% load thumbnail %}
 
 
 {% block main %}
@@ -9,10 +10,10 @@
   <div class="main-banner">
     <div class="owl-carousel owl-banner">
       {% for slide in slides %}
-        <div class="item item-1">
+        <div class="item item-1" style="background-image: url({{ slide.image.url }});">
           <div class="header-text">
-            <span class="category">Toronto, <em>Canada</em></span>
-            <h2>Hurry!<br>Get the Best Villa for you</h2>
+            <span class="category">{{ slide.city }}, <em>{{ slide.country }}</em></span>
+            <h2>{{ slide.text }}</h2>
           </div>
         </div>
       {% endfor %}
@@ -97,26 +98,31 @@
     </div>
   </div>
 
-  <div class="video section">
+  <div class="video section" style="background-image: url({{ video_section.background_image.url }});">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 offset-lg-4">
           <div class="section-heading text-center">
             <h6>| Video View</h6>
-            <h2>Get Closer View & Different Feeling</h2>
+            <h2>{{ video_section.text }}</h2>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="Test">
+    <img src="{% thumbnail video_section.background_image 1600x550 %}" alt="">
+  </div>
+
+
   <div class="video-content">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 offset-lg-1">
           <div class="video-frame">
-            <img src="/static/assets/images/video-frame.jpg" alt="">
-            <a href="https://youtube.com" target="_blank"><i class="fa fa-play"></i></a>
+            <img src="{{ video_section.video_thumbnail.url }}" alt="">
+            <a href="{{ video_section.link }}" target="_blank"><i class="fa fa-play"></i></a>
           </div>
         </div>
       </div>

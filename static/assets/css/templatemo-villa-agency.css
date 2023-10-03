@@ -744,7 +744,7 @@ Banner Style
   margin-top: 0px;
 }
 
-.main-banner .item-1 {
+/* .main-banner .item-1 {
   background-image: url(../images/banner-01.jpg);
 }
 
@@ -754,7 +754,7 @@ Banner Style
 
 .main-banner .item-3 {
   background-image: url(../images/banner-03.jpg);
-}
+} */
 
 .main-banner .item span.category {
   background-color: #fff;
@@ -958,7 +958,7 @@ Video Style
 */
 
 .video {
-  background-image: url(../images/video-bg.jpg);
+  
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

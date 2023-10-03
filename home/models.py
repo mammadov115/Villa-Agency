@@ -26,16 +26,24 @@ class SocialMediaLink(models.Model):
         return self.platform
 
 # slider
-
 class Slider(models.Model):
     image = models.ImageField(upload_to="Slider Images/%Y-%m-%d")
-    location = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    country = models.CharField(max_length=150)
     text = models.TextField(max_length=500)
 
     def __str__(self):
-        return f'{self.location} - {self.text}'
-    
-    
+        return f'{self.country} - {self.text}'
 
+# video section
     
+class Video(models.Model):
+    background_image = models.ImageField(upload_to="Video Section/Background Images/%Y-%m-%d")
+    text = models.CharField(max_length=150)
+    video_thumbnail = models.ImageField(upload_to="Video Section/Thumbnail Images/%Y-%m-%d")
+    link = models.URLField()
 
+    def __str__(self):
+        return "Video Section"
+    
+    
