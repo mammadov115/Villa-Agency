@@ -41,3 +41,22 @@ class VideoAdmin(admin.ModelAdmin):
             'show_save_add_another': False
         })
         return super().render_change_form(request, context, add, change, form_url, obj)
+    
+
+@admin.register(FunFacts)
+class FunFactsAdmin(admin.ModelAdmin):
+    model = FunFacts
+    save_as = True
+    
+    
+    def has_add_permission(self, request: HttpRequest) -> bool:
+        objects = FunFacts.objects.count()
+        return True if objects == 0 else False
+    
+    def changeform_view(self, request: HttpRequest, object_id: str | None = ..., form_url: str = ..., extra_context: dict[str, bool] | None = ...) -> Any:
+        extra_context = extra_context or {}
+        extra_context['show_save_and_add_another'] = False
+        return super().changeform_view(request, object_id, form_url, extra_context)
+
+    
+    

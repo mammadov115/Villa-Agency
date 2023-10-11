@@ -98,8 +98,8 @@
     </div>
   </div>
 
-  <div class="video section" style="background-image: url({{ video_section.background_image.url }});">
-    <div class="container">
+  <div class="video section" style="background-image: url({% thumbnail video_section.background_image 1600x550 crop %})">
+    <div class="container" >
       <div class="row">
         <div class="col-lg-4 offset-lg-4">
           <div class="section-heading text-center">
@@ -111,17 +111,12 @@
     </div>
   </div>
 
-  <div class="Test">
-    <img src="{% thumbnail video_section.background_image 1600x550 %}" alt="">
-  </div>
-
-
-  <div class="video-content">
-    <div class="container">
-      <div class="row">
+  <div class="video-content" >
+    <div class="container" >
+      <div class="row" >
         <div class="col-lg-10 offset-lg-1">
           <div class="video-frame">
-            <img src="{{ video_section.video_thumbnail.url }}" alt="">
+            <img src="{% thumbnail video_section.video_thumbnail 1070x480 crop %}" alt="">
             <a href="{{ video_section.link }}" target="_blank"><i class="fa fa-play"></i></a>
           </div>
         </div>
@@ -137,20 +132,20 @@
             <div class="row">
               <div class="col-lg-4">
                 <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="34" data-speed="1000"></h2>
+                  <h2 class="timer count-title count-number" data-to="{{ fun_facts.buildings_finished }}" data-speed="1100"></h2>
                    <p class="count-text ">Buildings<br>Finished Now</p>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="12" data-speed="1000"></h2>
+                  <h2 class="timer count-title count-number" data-to="{{ fun_facts.years_experience }}" data-speed="1000"></h2>
                   <p class="count-text ">Years<br>Experience</p>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="24" data-speed="1000"></h2>
-                  <p class="count-text ">Awwards<br>Won 2023</p>
+                  <h2 class="timer count-title count-number" data-to="{{ fun_facts.awards_won }}" data-speed="1000"></h2>
+                  <p class="count-text ">Awwards<br>Won {{ fun_facts.awards_won_date }}</p>
                 </div>
               </div>
             </div>

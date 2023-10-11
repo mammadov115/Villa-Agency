@@ -37,7 +37,6 @@ class Slider(models.Model):
         return f'{self.country} - {self.text}'
     
 # video section
-    
 class Video(models.Model):
     background_image = models.ImageField(upload_to="Video Section/Background Images/%Y-%m-%d")
     text = models.CharField(max_length=150)
@@ -47,4 +46,16 @@ class Video(models.Model):
     def __str__(self):
         return "Video Section"
     
-    
+#  Fun facts section
+class FunFacts(models.Model):
+    buildings_finished = models.PositiveIntegerField()
+    years_experience = models.PositiveIntegerField()
+    awards_won_date = models.PositiveBigIntegerField(help_text="Enter awards won year:")
+    awards_won = models.PositiveIntegerField()
+
+    class Meta:
+        verbose_name = "Fun Facts"
+        verbose_name_plural = "Fun Facts"
+
+    def __str__(self) -> str:
+        return "Fun facts section"
