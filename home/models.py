@@ -32,9 +32,10 @@ class Slider(models.Model):
     country = models.CharField(max_length=150)
     text = models.TextField(max_length=500)
 
+
     def __str__(self):
         return f'{self.country} - {self.text}'
-
+    
 # video section
     
 class Video(models.Model):

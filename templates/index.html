@@ -10,7 +10,7 @@
   <div class="main-banner">
     <div class="owl-carousel owl-banner">
       {% for slide in slides %}
-        <div class="item item-1" style="background-image: url({{ slide.image.url }});">
+        <div class="item item-1" style="background-image: url({% thumbnail  slide.image 1600x1000 crop %});">
           <div class="header-text">
             <span class="category">{{ slide.city }}, <em>{{ slide.country }}</em></span>
             <h2>{{ slide.text }}</h2>
