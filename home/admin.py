@@ -46,7 +46,6 @@ class VideoAdmin(admin.ModelAdmin):
 @admin.register(FunFacts)
 class FunFactsAdmin(admin.ModelAdmin):
     model = FunFacts
-    save_as = True
     
     
     def has_add_permission(self, request: HttpRequest) -> bool:
@@ -58,5 +57,34 @@ class FunFactsAdmin(admin.ModelAdmin):
         extra_context['show_save_and_add_another'] = False
         return super().changeform_view(request, object_id, form_url, extra_context)
 
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    model = Contact
+
+    def has_add_permission(self, request: HttpRequest) -> bool:
+        objects = Contact.objects.count()
+        return True if objects==0 else False
+
+    def changeform_view(self, request: HttpRequest, object_id: str | None = ..., form_url: str = ..., extra_context: dict[str, bool] | None = ...) -> Any:
+        extra_context = extra_context or {}
+        extra_context['show_save_and_add_another'] = False
+        return super().changeform_view(request, object_id, form_url, extra_context)
+
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
+    model = Message
+    list_display = ["name", "email", "subject"]
     
-    
+@admin.register(Footer)
+class FooterAdmin(admin.ModelAdmin):
+    model = Footer
+
+    def has_add_permission(self, request: HttpRequest) -> bool:
+        is_empty = Footer.objects.count() == 0
+        return True if is_empty else False
+
+    def changeform_view(self, request: HttpRequest, object_id: str | None = ..., form_url: str = ..., extra_context: dict[str, bool] | None = ...) -> Any:
+        extra_context = extra_context or {}
+        extra_context["show_save_and_add_another"] = False
+        return super().changeform_view(request, object_id, form_url, extra_context)

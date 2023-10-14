@@ -1,10 +1,15 @@
 from django.db import models
+from django.core.validators import RegexValidator
+from ckeditor.fields import RichTextField
 
 # Create your models here.
+
+phone_number_validator = RegexValidator(r'[-+()\d]+', "Wrong phone number!") 
 
 class HeaderData(models.Model): 
     logo = models.CharField(max_length=150)       
     email = models.EmailField()
+    number = models.CharField(max_length=50, validators=[phone_number_validator], verbose_name="Phone Number", help_text="Enter your phone number")
     location = models.CharField(max_length=250)
 
     def __str__(self):
@@ -59,3 +64,33 @@ class FunFacts(models.Model):
 
     def __str__(self) -> str:
         return "Fun facts section"
+
+# Contact us section
+class Contact(models.Model):
+    bg_image = models.ImageField()
+    text = models.CharField(max_length=250)
+    map_link = models.TextField(help_text="Enter Google Map location embed code")
+
+    def __str__(self):
+        return "Contact Us section"
+    
+# Message
+class Message(models.Model):
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    subject = models.CharField(max_length=250)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+    
+# Footer
+class Footer(models.Model):
+    footer_text = RichTextField(config_name='awesome_ckeditor')
+
+    def __str__(self):
+        return "Footer info"
+    
+    class Meta:
+        verbose_name_plural = "Footer Section"
+    

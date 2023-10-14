@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # local
     'home.apps.HomeConfig',
+    'properties.apps.PropertiesConfig',
     # third-party
-    'easy_thumbnails'
+    'easy_thumbnails',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
@@ -66,7 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'home.context_processors.data'
+                'home.context_processors.data',
+                'home.context_processors.footer'
             ],
         },
     },
@@ -130,3 +133,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # media configurations
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / "media"
+
+# ckeditor 
+CKEDITOR_CONFIGS = {
+    "awesome_ckeditor": {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ["Bold", "Italic", "Underline"],
+            ['Link', 'Unlink'],
+        ],
+        "width": 900,
+        "height": 75
+    },
+    "default" : {
+        
+    }
+}
