@@ -12,7 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", home, name="home_page"),
     path("properties/", properties, name="properties"),
-    path("property-details/", property_details, name="property_details"),
+    path("property-details/<str:category>/<str:location>/<int:id>/", property_details, name="property_details"),
     path("contact/", contact_us, name="contact_us" )
 
 ]

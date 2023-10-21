@@ -74,7 +74,7 @@ class ContactAdmin(admin.ModelAdmin):
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
     model = Message
-    list_display = ["name", "email", "subject"]
+    list_display = ["name", "email", "subject", "date"]
     
 @admin.register(Footer)
 class FooterAdmin(admin.ModelAdmin):

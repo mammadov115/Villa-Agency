@@ -13,7 +13,7 @@
                     <ul class="nav">
                       <li><a href="{% url "home_page" %}" {% if is_home_page %}class="active"{% endif %} >Home</a></li>
                       <li><a href="{% url "properties" %}">Properties</a></li>
-                      <li><a href="{% url "property_details" %}">Property Details</a></li>
+                      {% comment %} <li><a href="{% url "property_details" %}">Property Details</a></li> {% endcomment %}
                       <li><a href="{% url "contact_us" %}">Contact Us</a></li>
                       <li><a href="#"><i class="fa fa-calendar"></i> Schedule a visit</a></li>
                   </ul>   

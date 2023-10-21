@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.urls import reverse
 
 # Create your models here.
 
@@ -38,6 +39,10 @@ class Property(models.Model):
 
     def __str__(self):
         return f'No category' if self.category == None else self.category.name
+    
+    def get_absolute_url(self):
+        return reverse("property_details", args=[self.category,self.location, self.id])
+    
     
     class Meta:
         verbose_name_plural = "Properties"

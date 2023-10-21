@@ -33,7 +33,7 @@
           {% for property in properties %}
             <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 {{ property.category.name|slugify }}">
               <div class="item">
-                <a href="property-details.html"><img src="{% thumbnail property.image 236x175 %}" alt=""></a>
+                <a href="{{ property.get_absolute_url }}"><img src="{% thumbnail property.image 236x175 %}" alt=""></a>
                 <span class="category">{{ property.category.name }}</span>
                 <h6>${{property.cost}}</h6>
                 <h4><a href="property-details.html">{{ property.location }}</a></h4>
@@ -54,10 +54,17 @@
         <div class="row">
           <div class="col-lg-12">
             <ul class="pagination">
-              <li><a href="#">1</a></li>
-              <li><a class="is_active" href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">>></a></li>
+              {% if properties.has_previous %}
+                <li><a href="?page=1"><<</a></li>
+                <li><a href="?page={{properties.previous_page_number}}">{{ properties.previous_page_number }}</a></li>
+              {% endif %}
+              {% if properties.has_other_pages %}
+                <li><a class="is_active" href="#">{{ properties.number }}</a></li>
+              {% endif %}
+              {% if properties.has_next %}
+                <li><a href="?page={{properties.next_page_number}}">{{ properties.next_page_number }}</a></li>
+                <li><a href="?page={{ paginator.num_pages }}">>></a></li>
+              {% endif %}
             </ul>
           </div>
         </div>
